@@ -5,7 +5,8 @@ from .models import Task
 # Create your views here.
 def addTask(request):
     task=request.POST['task']
-    Task.objects.create(task=task)
+    if(task!=''):
+     Task.objects.create(task=task)
     return redirect('/')
 def mark_as_done(request,pk):
     task=get_object_or_404(Task,pk=pk)
